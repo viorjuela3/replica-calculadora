@@ -16,9 +16,16 @@ const botonDelete = document.getElementsByName('data-delete')[0];
 
 var result = document.getElementById('result');
 
+/*luego de darle funcionalidad a cada boton vamos a implementar metodos la logica de como funcionara
+para eso empeamos a crear algunas variables*/
+
+var opeActual = '';
+var opeAnterior = '';
+var operacion = undefined;
+
 //agregamos el evento onclic para poder acceder a cada botón
 
-//estamos identificando a partir del evento click a que botón se invoca desde el la pagina
+//estamos identificando a partir del evento click a que botón tipo numero se invoca desde el la pagina
 
 botonNumeros.forEach(function(boton){
     boton.addEventListener('click', function(){
@@ -28,11 +35,27 @@ botonNumeros.forEach(function(boton){
 
 });
 
-//
+//identificamos a que botos tipo operación se esta invocando desde la pagina
 
 botonOpera.forEach(function(boton){
     boton.addEventListener('click', function(){
-        //selectOperacion(boton.innerText);
-        alert(boton.innerText);
+        selectOperacion(boton.innerText);
+        
     })
 });
+
+//le estamos dando dos funciones al boton igual el cual calcular mostrara un resultado y actualizarDisplay mostrara un resultado nuevo
+
+botonIgual.addEventListener('click', function(){
+    calcular();
+    actualizarDisplay();
+
+});
+
+//aqui estamos limpiando con el evento clear para limpiar la pantalla de los calculos realizados
+
+botonDelete.addEventListener('click', function(){
+    clear();
+    acttualizarDisplay();
+});
+
