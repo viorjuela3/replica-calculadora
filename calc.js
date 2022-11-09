@@ -59,3 +59,52 @@ botonDelete.addEventListener('click', function(){
     acttualizarDisplay();
 });
 
+//
+
+function selectOperacion(op){
+    //si no se estan recibiendo datos y en consecuencia la informacion esta vacio no haga nada y salga de la operacion
+    if (opeActual === '') return;
+    //pero si hay un número vamos a realizar una operacion
+    if (opeAnterior !== ''){
+        calcular()
+    }
+    operacion = op.toString();
+    opeAnterior = opeActual;
+    opeActual ='';
+
+}
+
+//los datos que estamos recibiendo los vamos a convertir en numeros decicmales
+function calcular(){
+    var calculo;
+    const anterior = parseFloat(opeAnterior);
+    const actual = parseFloat(opeActual);
+}
+
+
+/* Como el input que creamos es de tipo text debemos convertir ese numero para eso utilizamos
+toString y con el arguemnto num vamos a recibir el numero que el usuario esta dando click y 
+concatenamos el próximo número al que le demos click esto sirve cuando son numeros de varias cifras*/
+
+function agregarNumero(num){
+    opeActual = opeActual.toString() + num.toString();
+    actualizarDisplay();
+}
+
+//aqui estamos limpiando nuestra calculadora iniciando en vacio las operaciones
+
+function clear(){
+    opeActual = '';
+    opeAnterior = '';
+    operacion = undefined;
+}
+
+// con esta funcion podremos ver el resultado de la operacion actual 
+
+
+function actualizarDisplay(){
+    result.value = opeActual;
+}
+
+//cuando actualizamos estamos llamando la funcion que escribimos para limpiar e iniciar en ceros
+clear();
